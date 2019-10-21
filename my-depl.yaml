@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: test-depl
+  labels:
+   app: osgi-tut
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: osgi-tut
+  template:
+    metadata:
+      labels:
+        app: osgi-tut
+    spec:
+      containers:
+      - name: osgi-tut-container
+        image: klibio/io.klib.docker.osgi.tutorial:develop-latest
+        imagePullPolicy: Always
+        tty: true
+        ports:
+        - containerPort: 8080
+          protocol: TCP

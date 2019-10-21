@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: test-svc
+  labels:
+    app: osgi-tut
+spec:
+  type: NodePort
+  ports:
+    - port: 8888
+      protocol: TCP
+      targetPort: 8080
+      nodePort: 31111
+  selector:
+    app: osgi-tut
